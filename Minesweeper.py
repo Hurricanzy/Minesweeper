@@ -23,9 +23,17 @@ class MineSweeper:
             temp = []
             for j in range(MineSweeper.COLUMNS):
                 btn = MyButton(MineSweeper.window, x=i, y=j, number=count)
+                btn.config(command=lambda button = btn:self.click(button))
                 temp.append(btn)
                 count += 1
             self.buttons.append(temp)
+
+    def click(self, clicked_button: MyButton):
+        if clicked_button.is_mine:
+            clicked_button.config(text="*", background='red', disabledforeground='black')
+        else:
+            clicked_button.config(text=clicked_button.number, disabledforeground='black')
+        clicked_button.config(state='disabled')
     def create_widgets(self):
         for i in range(MineSweeper.ROW):
             for j in range(MineSweeper.COLUMNS):
