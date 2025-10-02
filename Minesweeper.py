@@ -13,7 +13,7 @@ colors = {
     8: 'black'
 }
 background_color = '#20232a'
-clicked_color = 'white'
+clicked_color = '#f2f3f4'
 
 class MyButton(tk.Button):
     def __init__(self, master, x, y, number=0, *args, **kwargs):
@@ -87,7 +87,7 @@ class MineSweeper:
             self.start_timer()
 
         if clicked_button.is_mine:
-            clicked_button.config(text="*", background='red', disabledforeground='black')
+            clicked_button.config(text="*", background='#cc0000', disabledforeground='black')
             clicked_button.is_open = True
             MineSweeper.IS_GAME_OVER = True
             self.stop_timer()
@@ -204,7 +204,7 @@ class MineSweeper:
             for j in range(1, MineSweeper.COLUMNS + 1):
                 btn = self.buttons[i][j]
                 if btn.is_mine:
-                    btn.config(text="*", background='red', disabledforeground='black')
+                    btn.config(text="*", background='#cc0000', disabledforeground='black')
                 elif btn.count_bomb in colors:
                     color = colors.get(btn.count_bomb, 'black')
                     btn.config(text=btn.count_bomb, fg=color, bg=clicked_color)
